@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: echoroom
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 24
+      - key: MAX_VOICE_SEATS
+        value: 10
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: echoroom-data
+      mountPath: /var/data
+      sizeGB: 1
